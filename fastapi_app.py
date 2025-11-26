@@ -16,7 +16,8 @@ app.add_middleware(
 )
 
 # Initialize chatbot (singleton for app lifetime)
-chatbot = CustomerCareChatbot()
+# Force rebuild to avoid pickle compatibility issues between environments
+chatbot = CustomerCareChatbot(force_rebuild=True)
 
 class QueryRequest(BaseModel):
     question: str
