@@ -224,13 +224,13 @@ class CustomerCareChatbot:
         if not hasattr(self, 'vectorstore'):
             print("No vector store available. Please ensure customer care documents are processed first.")
             return
-        
+
         # Create retriever with more relevant documents for customer care
         retriever = self.vectorstore.as_retriever(
             search_type="similarity",
             search_kwargs={"k": 6}  # Increased for better customer care context
         )
-        
+
         # Contextualize question prompt for customer care
         contextualize_q_system_prompt = """Given a chat history and the latest user question
         about customer service, support, or related topics, formulate a standalone question
@@ -241,18 +241,18 @@ class CustomerCareChatbot:
 
         For complex customer care questions, reformulate them if needed to be standalone.
         Do NOT answer the question, just reformulate it if needed and otherwise return it as is."""
-        
+
         contextualize_q_prompt = ChatPromptTemplate.from_messages([
             ("system", contextualize_q_system_prompt),
             MessagesPlaceholder("chat_history"),
             ("human", "{input}"),
         ])
-        
+
         # Create history-aware retriever
         history_aware_retriever = create_history_aware_retriever(
             self.llm, retriever, contextualize_q_prompt
         )
-        
+
         # Customer Care specific QA system prompt
         qa_system_prompt = """You are a knowledgeable Customer Care Assistant representing our company.
         You have access to comprehensive company information including our services, processes, policies, and procedures.
@@ -302,19 +302,19 @@ class CustomerCareChatbot:
            - Respond naturally as a knowledgeable customer care professional would
 
         Context from our company knowledge base: {context}"""
-        
+
         qa_prompt = ChatPromptTemplate.from_messages([
             ("system", qa_system_prompt),
             MessagesPlaceholder("chat_history"),
             ("human", "{input}"),
         ])
-        
+
         # Create the question-answer chain
         question_answer_chain = create_stuff_documents_chain(self.llm, qa_prompt)
-        
+
         # Create the RAG chain with history awareness
         rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
-        
+
         # Wrap with message history
         self.conversational_rag_chain = RunnableWithMessageHistory(
             rag_chain,
