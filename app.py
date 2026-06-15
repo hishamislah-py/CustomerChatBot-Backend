@@ -6,7 +6,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_groq import ChatGroq
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder, PromptTemplate
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_classic.chains.retrieval import create_retrieval_chain
 from langchain_classic.chains.history_aware_retriever import create_history_aware_retriever
@@ -14,6 +14,7 @@ from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.messages import HumanMessage, AIMessage
+from scraper import ThreddDocsScraper
 import pickle
 import hashlib
 import json
@@ -26,11 +27,14 @@ load_dotenv()
 class CustomerCareChatbot:
     def __init__(self, data_folder="data", force_rebuild=False):
         self.data_folder = data_folder
-        self.metadata_file = "document_metadata.json"
-        
+        # Knowledge base is now scraped from the Thredd Cards API docs; the scraper owns
+        # this manifest (web analogue of the old document_metadata.json).
+        self.metadata_file = "scrape_manifest.json"
+        self.scraper = ThreddDocsScraper()
+
         # Initialize memory store for different sessions
         self.store: Dict[str, BaseChatMessageHistory] = {}
-        
+
         # Initialize components
         self.initialize_components()
         
@@ -60,9 +64,19 @@ class CustomerCareChatbot:
             model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
         
-        # FAISS vector store path
+        # FAISS vector store path + a signature of the corpus it was built from.
+        # The signature lets us detect a stale/foreign index (e.g. one left over from
+        # the old PDF data) and rebuild it instead of silently serving stale answers.
         self.faiss_index_path = "faiss_index"
-    
+        self.faiss_signature_path = "faiss_index.sig"
+
+    def _corpus_signature(self, documents):
+        """Stable hash of the full document corpus, used to validate the FAISS index."""
+        h = hashlib.md5()
+        for content in sorted(d.page_content for d in documents):
+            h.update(content.encode("utf-8"))
+        return h.hexdigest()
+
     def get_file_hash(self, filepath):
         """Calculate MD5 hash of a file to detect changes"""
         hash_md5 = hashlib.md5()
@@ -159,66 +173,62 @@ class CustomerCareChatbot:
             print(f"Error loading {file_path}: {str(e)}")
             return []
     
+    def load_web_documents(self, force_rebuild=False):
+        """Scrape the Thredd Cards API docs. Returns (documents, changed)."""
+        return self.scraper.scrape_all(force=force_rebuild)
+
     def process_documents(self, force_rebuild=False):
-        """Load and process all supported documents from the data folder"""
-        # Get all supported files
-        files = self.get_supported_files()
-        
-        if not files:
-            print("No customer care knowledge base documents found in the data folder.")
-            print("Please add PDF (.pdf) or Word (.docx, .doc) files to the 'data' folder.")
+        """Scrape the Thredd Cards API documentation and (re)build the vector store."""
+        print("Loading Thredd Cards API documentation...")
+        all_documents, changes_detected = self.load_web_documents(force_rebuild)
+
+        if not all_documents:
+            print("No documentation pages were loaded.")
+            print("Check network access to https://cardsapidocs.thredd.com")
             return
-        
-        # Check for changes
-        changes_detected, new_metadata = self.check_for_changes(files)
-        
-        # Check if FAISS index already exists and no changes detected
-        if (os.path.exists(self.faiss_index_path) and 
-            not force_rebuild and 
-            not changes_detected):
+
+        # Signature of the current corpus; only reuse a FAISS index that matches it.
+        current_signature = self._corpus_signature(all_documents)
+        existing_signature = None
+        if os.path.exists(self.faiss_signature_path):
+            with open(self.faiss_signature_path, "r", encoding="utf-8") as f:
+                existing_signature = f.read().strip()
+
+        # Reuse the existing FAISS index only when it was built from this exact corpus.
+        if (os.path.exists(self.faiss_index_path) and
+                not force_rebuild and
+                not changes_detected and
+                existing_signature == current_signature):
             print("Loading existing FAISS index (no changes detected)...")
             self.vectorstore = FAISS.load_local(
-                self.faiss_index_path, 
+                self.faiss_index_path,
                 self.embeddings,
                 allow_dangerous_deserialization=True
             )
-        else:
-            print("Creating new FAISS index from customer care knowledge base...")
-            
-            # Load all documents
-            all_documents = []
-            for file_path in files:
-                documents = self.load_document(file_path)
-                all_documents.extend(documents)
-            
-            if not all_documents:
-                print("No documents were successfully loaded.")
-                return
-            
-            # Split documents into chunks optimized for customer care content
-            text_splitter = RecursiveCharacterTextSplitter(
-                chunk_size=800,  # Increased for better context
-                chunk_overlap=100,
-                separators=["\n\n", "\n", "•", ".", "?", "!", ";", ",", " "]
-            )
-            self.docs = text_splitter.split_documents(all_documents)
-            
-            print(f"Split customer care documents into {len(self.docs)} chunks")
-            
-            # Create FAISS vector store
-            self.vectorstore = FAISS.from_documents(
-                self.docs,
-                self.embeddings
-            )
-            
-            # Save the FAISS index locally
-            self.vectorstore.save_local(self.faiss_index_path)
-            
-            # Save metadata
-            self.save_metadata(new_metadata)
-            
-            print(f"FAISS index saved to {self.faiss_index_path}")
-            print(f"Processed {len(files)} customer care documents with {len(self.docs)} total chunks")
+            return
+
+        print(f"Building FAISS index from {len(all_documents)} documentation pages...")
+
+        # Split documents into chunks (markdown splits cleanly on these separators).
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=800,
+            chunk_overlap=100,
+            separators=["\n\n", "\n", "•", ".", "?", "!", ";", ",", " "]
+        )
+        self.docs = text_splitter.split_documents(all_documents)
+        print(f"Split documentation into {len(self.docs)} chunks")
+
+        # Create and persist the FAISS vector store.
+        self.vectorstore = FAISS.from_documents(
+            self.docs,
+            self.embeddings
+        )
+        self.vectorstore.save_local(self.faiss_index_path)
+        with open(self.faiss_signature_path, "w", encoding="utf-8") as f:
+            f.write(current_signature)
+
+        print(f"FAISS index saved to {self.faiss_index_path}")
+        print(f"Processed {len(all_documents)} documentation pages into {len(self.docs)} chunks")
     
     def setup_retrieval_chain_with_memory(self):
         """Setup the RAG retrieval chain with conversation memory for customer care queries"""
@@ -232,15 +242,16 @@ class CustomerCareChatbot:
             search_kwargs={"k": 6}  # Increased for better customer care context
         )
 
-        # Contextualize question prompt for customer care
+        # Contextualize question prompt for the Thredd Cards API docs
         contextualize_q_system_prompt = """Given a chat history and the latest user question
-        about customer service, support, or related topics, formulate a standalone question
-        which can be understood without the chat history.
+        about the Thredd Cards API (cards, cardholders, 3D Secure, card controls,
+        tokenisation, transactions, API endpoints, fields, error codes, integration, etc.),
+        formulate a standalone question which can be understood without the chat history.
 
         IMPORTANT: For simple greetings like "Hi", "Hello", "Good morning", "Thank you", etc.,
         return them exactly as they are without any modification or context from chat history.
 
-        For complex customer care questions, reformulate them if needed to be standalone.
+        For complex technical questions, reformulate them if needed to be standalone.
         Do NOT answer the question, just reformulate it if needed and otherwise return it as is."""
 
         contextualize_q_prompt = ChatPromptTemplate.from_messages([
@@ -254,55 +265,60 @@ class CustomerCareChatbot:
             self.llm, retriever, contextualize_q_prompt
         )
 
-        # Customer Care specific QA system prompt
-        qa_system_prompt = """You are a knowledgeable Customer Care Assistant representing our company.
-        You have access to comprehensive company information including our services, processes, policies, and procedures.
-        Use the provided context and conversation history to answer questions about:
+        # Thredd Cards API documentation assistant prompt
+        qa_system_prompt = """You are the Thredd Cards API Documentation Assistant.
+        You help developers and integration teams by answering questions strictly from the
+        official Thredd Cards API documentation (https://cardsapidocs.thredd.com). Topics include:
 
-        📞 Our Services: Customer support, inquiries, complaints, feedback
-        🔍 Product Information: Features, usage, troubleshooting
-        📋 Procedures: Step-by-step guides for common issues and requests
-        📞 Support: Contact information, operating hours, response times
-        💼 Company Operations: Staff roles, escalation procedures, support systems
-        provide a concise and accurate answer in 50 to 100 words
+        💳 Cards & Cardholders: creating, retrieving, updating, replacing, renewing cards; PINs, CVV, card status
+        🔐 Security: 3D Secure enrolment, mTLS authentication, sending secure data
+        🎛️ Card Controls & Limits: control groups, card limits, balances
+        🔁 Tokenisation: payment tokens, binding/unbinding, card images
+        🌐 API Reference: endpoints, request/response fields, parameters, status/error codes
+        🧩 Integration: getting started, accessing the API, products and services
+
+        STRICT SCOPE — READ THIS FIRST:
+        You are NOT a general-purpose assistant. You answer ONLY using the Thredd Cards API
+        documentation provided in the context below. You must NOT use any outside knowledge,
+        general world knowledge, or training data to answer.
+        - If a question is about anything other than the Thredd Cards API (e.g. people, history,
+          geography, politics, general trivia, other companies/products, coding help unrelated
+          to the Thredd Cards API, opinions, current events), you MUST refuse — even if you
+          know the answer. Do NOT explain, guess, or offer alternatives about the off-topic subject.
+        - If a question is on-topic but the answer is not in the provided context, say you
+          couldn't find it in the documentation.
+        - Never invent endpoints, fields, parameters, or behaviour that is not in the context.
 
         Response Guidelines:
 
         1. **For Greetings & Pleasantries** ("Hi", "Hello", "Good morning", "Thank you"):
            - Treat each greeting as a fresh interaction
-           - Respond warmly and professionally: "Hello! Welcome to our Customer Care services. I'm here to help you with all your concerns. How can I assist you today?"
+           - Respond: "Hello! I'm the Thredd Cards API documentation assistant. Ask me anything about the Cards API — cards, 3D Secure, tokenisation, endpoints, fields, and more. How can I help?"
            - Do NOT reference previous conversations or say "again" or "still here"
-           - Keep it simple and welcoming
 
-        2. **For Customer Care Questions**:
-           - Provide detailed, helpful responses
-           - Use **bold headings** for different sections
-           - Structure responses with numbered points or bullet points when appropriate
-           - Include specific processes, timelines, and requirements when relevant
-           - Reference company policies and procedures from the knowledge base
+        2. **For Off-Topic / Out-of-Scope Questions** (anything not about the Thredd Cards API):
+           - Do NOT answer from general knowledge. Do NOT speculate about who/what the subject might be.
+           - Reply ONLY with: "I can only help with questions about the Thredd Cards API. I don't have anything about that. Try asking about cards, cardholders, 3D Secure, card controls, tokenisation, or the API endpoints."
+           - Do not add any extra information about the off-topic subject.
 
-        3. **For Service-Specific Inquiries**:
-           - Explain our services and support options
-           - Provide step-by-step processes
-           - Mention required information and typical response times
-           - Include contact information for next steps
+        3. **For On-Topic Technical Questions**:
+           - Give accurate, developer-focused answers grounded ONLY in the documentation context
+           - Use **bold headings**, numbered steps, and bullet points where helpful
+           - Include endpoint paths, HTTP methods, request/response field names, and example values when present in the context
+           - Preserve code, JSON, and tables from the documentation
+           - Be as detailed as the question requires (do not artificially truncate technical answers)
 
-        4. **Professional Tone**:
-           - Be helpful, informative, and reassuring
-           - Show expertise in customer service matters
-           - Acknowledge when information might need verification with a specialist
-           - Use appropriate terminology while keeping explanations clear
+        4. **Always Cite Sources** (for on-topic answers drawn from the context):
+           - End the answer with a "Sources:" line listing the page title(s) and URL(s) from the context, e.g.
+             "Sources: Introduction to 3D Secure (https://cardsapidocs.thredd.com/docs/introduction-to-3d-secure)"
 
-        5. **If Information Not Available**:
-           - Respond: "I don't have that specific information in our current knowledge base. Please contact our support team at +1 (555) 123-4567 or support@example.com for personalized assistance."
+        5. **If On-Topic But Not in the Documentation**:
+           - Respond: "I couldn't find that in the Thredd Cards API documentation. Please check https://cardsapidocs.thredd.com or contact Thredd support."
 
-        6. **For Complex Questions Only**:
-           - Reference previous parts of our conversation when it adds value to complex inquiries
-           - For simple greetings, do NOT reference conversation history
-           - Avoid mechanical responses like "As per your request" or "Since you asked"
-           - Respond naturally as a knowledgeable customer care professional would
+        6. **Tone**: Professional, precise, and helpful — like good developer documentation.
 
-        Context from our company knowledge base: {context}"""
+        Context from the Thredd Cards API documentation:
+        {context}"""
 
         qa_prompt = ChatPromptTemplate.from_messages([
             ("system", qa_system_prompt),
@@ -310,8 +326,15 @@ class CustomerCareChatbot:
             ("human", "{input}"),
         ])
 
+        # Prefix each retrieved chunk with its source so the LLM can cite it.
+        document_prompt = PromptTemplate.from_template(
+            "Source: {title} ({source_url})\n{page_content}"
+        )
+
         # Create the question-answer chain
-        question_answer_chain = create_stuff_documents_chain(self.llm, qa_prompt)
+        question_answer_chain = create_stuff_documents_chain(
+            self.llm, qa_prompt, document_prompt=document_prompt
+        )
 
         # Create the RAG chain with history awareness
         rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
@@ -326,10 +349,10 @@ class CustomerCareChatbot:
         )
     
     def query(self, question, session_id="default"):
-        """Query the Customer Care chatbot with memory"""
+        """Query the Thredd Cards API documentation assistant with memory"""
         if not hasattr(self, 'conversational_rag_chain'):
-            return "Sorry, the customer care assistant is not properly initialized. Please check if knowledge base documents are available."
-        
+            return "Sorry, the assistant is not properly initialized. Please ensure the documentation has been scraped successfully."
+
         try:
             response = self.conversational_rag_chain.invoke(
                 {"input": question},
@@ -337,7 +360,7 @@ class CustomerCareChatbot:
             )
             return response["answer"]
         except Exception as e:
-            return f"I apologize, but I encountered an error while processing your request: {str(e)}. Please try again or contact our support team at +1 (555) 123-4567."
+            return f"I apologize, but I encountered an error while processing your request: {str(e)}. Please try again, or see https://cardsapidocs.thredd.com."
     
     def clear_memory(self, session_id="default"):
         """Clear conversation memory for a specific session"""
@@ -387,18 +410,19 @@ class CustomerCareChatbot:
         print("All conversation histories have been cleared.")
     
     def list_knowledge_base_documents(self):
-        """List all loaded knowledge base documents"""
+        """List all scraped documentation pages"""
         metadata = self.load_metadata()
-        if not metadata:
-            print("No knowledge base documents loaded.")
+        pages = metadata.get("pages", {}) if isinstance(metadata, dict) else {}
+        if not pages:
+            print("No documentation pages loaded.")
             return
-        
-        print("\nCustomer Care Knowledge Base Documents:")
+
+        print(f"\nThredd Cards API Documentation ({len(pages)} pages):")
         print("-" * 60)
-        for filename, info in metadata.items():
-            print(f"📄 {filename}")
-            print(f"   Path: {info['path']}")
-            print(f"   Last Modified: {info['last_modified']}")
+        for url, info in pages.items():
+            print(f"📄 {info.get('title', url)}")
+            print(f"   URL: {url}")
+            print(f"   Section: {info.get('section') or '—'}")
             print()
     
     def knowledge_search(self, query, k=6):
@@ -420,57 +444,57 @@ class CustomerCareChatbot:
 
 def main():
     try:
-        # Initialize the customer care chatbot
-        print("📞 Initializing Customer Care Chatbot...")
-        print("This intelligent assistant will help with all customer inquiries using our comprehensive knowledge base.")
-        print("The chatbot remembers our conversation context for personalized assistance.")
+        # Initialize the Thredd Cards API docs chatbot
+        print("💳 Initializing Thredd Cards API Documentation Assistant...")
+        print("This assistant answers questions from the Thredd Cards API docs (https://cardsapidocs.thredd.com).")
+        print("The chatbot remembers your conversation context within a session.")
 
         chatbot = CustomerCareChatbot()
 
         if hasattr(chatbot, 'conversational_rag_chain'):
-            print("\n✅ Customer Care Chatbot initialized successfully!")
+            print("\n✅ Thredd Cards API Assistant initialized successfully!")
             print("\n" + "="*70)
-            print("📞 WELCOME TO YOUR CUSTOMER CARE ASSISTANT 📞")
+            print("💳 THREDD CARDS API DOCUMENTATION ASSISTANT 💳")
             print("="*70)
             print("\nI can help you with:")
-            print("🔹 Customer support and inquiries")
-            print("🔹 Product information and troubleshooting")
-            print("🔹 Documentation and procedures")
-            print("🔹 Service information and policies")
-            print("🔹 Contact details and support information")
-            
+            print("🔹 Cards & cardholders (create, retrieve, update, replace, PIN, CVV)")
+            print("🔹 3D Secure enrolment & mTLS authentication")
+            print("🔹 Card controls, limits and balances")
+            print("🔹 Card tokenisation & payment tokens")
+            print("🔹 API endpoints, request/response fields and error codes")
+
             print("\nAvailable commands:")
-            print("• Type any customer care question")
-            print("• 'docs' - View knowledge base documents")
-            print("• 'refresh' - Reload knowledge base")
+            print("• Type any Thredd Cards API question")
+            print("• 'docs' - View scraped documentation pages")
+            print("• 'refresh' - Re-scrape the documentation")
             print("• 'history' - View conversation history")
             print("• 'clear' - Clear conversation memory")
             print("• 'sessions' - List active sessions")
-            print("• 'search [query]' - Search knowledge base")
+            print("• 'search [query]' - Search the documentation")
             print("• 'help' - Show this menu")
             print("• 'exit' - End conversation")
-            
+
             # Default session for client interaction
             session_id = "client_session"
-            
-            # Customer Care chatbot interface
+
+            # Thredd Cards API assistant interface
             while True:
                 user_input = input(f"\n{'='*20}\nYou: ").strip()
 
                 if user_input.lower() == 'exit':
-                    print("Thank you for using our Customer Care Assistant! Have a great day! 📞")
+                    print("Thanks for using the Thredd Cards API Assistant! 💳")
                     break
 
                 elif user_input.lower() == 'help':
-                    print("\n📞 CUSTOMER CARE ASSISTANT COMMANDS:")
+                    print("\n💳 THREDD CARDS API ASSISTANT COMMANDS:")
                     print("-" * 40)
-                    print("• Ask any customer care question")
-                    print("• 'docs' - View knowledge base documents")
-                    print("• 'refresh' - Reload knowledge base")
+                    print("• Ask any Thredd Cards API question")
+                    print("• 'docs' - View scraped documentation pages")
+                    print("• 'refresh' - Re-scrape the documentation")
                     print("• 'history' - View conversation history")
                     print("• 'clear' - Clear conversation memory")
                     print("• 'sessions' - List active sessions")
-                    print("• 'search [your query]' - Search knowledge base")
+                    print("• 'search [your query]' - Search the documentation")
                     print("• 'help' - Show this menu")
                     print("• 'exit' - End conversation")
                     continue
@@ -500,26 +524,26 @@ def main():
                     if search_query:
                         chatbot.knowledge_search(search_query)
                     else:
-                        print("Please provide a search query. Example: 'search billing issue'")
+                        print("Please provide a search query. Example: 'search 3d secure'")
                     continue
-                    
+
                 elif not user_input:
                     continue
-                
-                print("\n📞 Customer Care Assistant: ", end="")
+
+                print("\n💳 Thredd Cards API Assistant: ", end="")
                 response = chatbot.query(user_input, session_id)
                 print(response)
-                
+
         else:
-            print("❌ Failed to initialize Customer Care Chatbot.")
-            print("Please check your environment variables and ensure the 'data' folder contains the customer care knowledge base documents.")
+            print("❌ Failed to initialize Thredd Cards API Assistant.")
+            print("Please check your environment variables and network access to https://cardsapidocs.thredd.com.")
 
     except Exception as e:
-        print(f"❌ Error initializing Customer Care Chatbot: {str(e)}")
+        print(f"❌ Error initializing Thredd Cards API Assistant: {str(e)}")
         print("Please check your environment setup:")
         print("1. Ensure GROQ_API_KEY is set in your .env file")
-        print("2. Make sure the 'data' folder contains your customer care knowledge base PDF")
-        print("3. Verify all required packages are installed")
+        print("2. Make sure you have network access to https://cardsapidocs.thredd.com")
+        print("3. Verify all required packages are installed (pip install -r requirements.txt)")
 
 if __name__ == "__main__":
     main()

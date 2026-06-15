@@ -1,0 +1,1358 @@
+{
+  "scraped_at": "2026-06-15T12:27:31.282567+00:00",
+  "base_url": "https://cardsapidocs.thredd.com",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "pages": {
+    "https://cardsapidocs.thredd.com/docs/creating-3d-secure-credentials": {
+      "title": "Managing 3D Secure Credentials",
+      "section": "Guides",
+      "content_hash": "5662548028f8c943ca43617833a5526d",
+      "cache_file": "scraped_data/docs_creating-3d-secure-credentials.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/introduction-to-3d-secure": {
+      "title": "Introduction to 3D Secure",
+      "section": "Guides",
+      "content_hash": "a0e080c8a7209c4d79b24b85e95b9a84",
+      "cache_file": "scraped_data/docs_introduction-to-3d-secure.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/card-controls": {
+      "title": "Managing Card Control Groups",
+      "section": "Guides",
+      "content_hash": "162909bbbef8d9ad76e1a76e5ed6c390",
+      "cache_file": "scraped_data/docs_card-controls.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/introduction-to-card-controls": {
+      "title": "Introduction to Card Control Groups",
+      "section": "Guides",
+      "content_hash": "3947d332e7e3abb436685a7a008b622c",
+      "cache_file": "scraped_data/docs_introduction-to-card-controls.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/get-card-payment-token-details-field-descriptions": {
+      "title": "Get Card Payment Token Details - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "2dcb564f17e02072ab4533b8735bba63",
+      "cache_file": "scraped_data/docs_get-card-payment-token-details-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/get-card-payment-token-details": {
+      "title": "Get Card Payment Token Details",
+      "section": "Guides",
+      "content_hash": "7f8520936d0f35404f09c81f42091b35",
+      "cache_file": "scraped_data/docs_get-card-payment-token-details.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/get-card-payment-tokens-field-descriptions": {
+      "title": "Get Card Payment Tokens - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "9db9ab99c5a5b64f230fcd3806e6e890",
+      "cache_file": "scraped_data/docs_get-card-payment-tokens-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/get-card-payment-tokens": {
+      "title": "Get Card Payment Tokens",
+      "section": "Guides",
+      "content_hash": "016a5465a19312ecf40125c680a80477",
+      "cache_file": "scraped_data/docs_get-card-payment-tokens.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/introduction-to-card-tokenization": {
+      "title": "Introduction to Card Tokenisation",
+      "section": "Guides",
+      "content_hash": "037577654dec5dc76e0591948af8716f",
+      "cache_file": "scraped_data/docs_introduction-to-card-tokenization.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/unbind-payment-token": {
+      "title": "Unbind Payment Token",
+      "section": "Guides",
+      "content_hash": "30d38ebed38cc1fc00f5523b7c598b61",
+      "cache_file": "scraped_data/docs_unbind-payment-token.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/load-and-unload-bin-sponsor": {
+      "title": "Load and Unload Card for Issuer",
+      "section": "Guides",
+      "content_hash": "02ebda0181cae2514506c87393fe3575",
+      "cache_file": "scraped_data/docs_load-and-unload-bin-sponsor.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/load-and-unload-bin-sponsor-field-descriptions": {
+      "title": "Load and Unload Card for Issuer - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "756c22cf24f751004a44dfbe7fabc94c",
+      "cache_file": "scraped_data/docs_load-and-unload-bin-sponsor-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/loading-unloading-a-card": {
+      "title": "Transaction Types",
+      "section": "Guides",
+      "content_hash": "f499798e5bd018224608ceb594e95dc7",
+      "cache_file": "scraped_data/docs_loading-unloading-a-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/retrieving-card-transactions": {
+      "title": "List Card Transactions",
+      "section": "Guides",
+      "content_hash": "40af449bec7438005dabe02baf19c29b",
+      "cache_file": "scraped_data/docs_retrieving-card-transactions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/create-bulk-physical-cards-field-descriptions": {
+      "title": "Create Bulk Physical Cards - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "1e7642774c8a11d9b008a0b9adb15591",
+      "cache_file": "scraped_data/docs_create-bulk-physical-cards-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/get-bulk-card-progress": {
+      "title": "Get Bulk Card Progress - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "bfeef814eb18716fe3320d09f2b63836",
+      "cache_file": "scraped_data/docs_get-bulk-card-progress.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/get-bulk-card-tokens-field-descriptions": {
+      "title": "Get Bulk Card Tokens - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "fc94a5620d42754c2792307a96466ae3",
+      "cache_file": "scraped_data/docs_get-bulk-card-tokens-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/bulk-create-cards": {
+      "title": "Bulk Create Physical Cards",
+      "section": "Guides",
+      "content_hash": "1be952f0e3500982bf6c6e35fb9686b4",
+      "cache_file": "scraped_data/docs_bulk-create-cards.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/card-acceptors": {
+      "title": "Card Acceptors",
+      "section": "Guides",
+      "content_hash": "7ba04ffd4b895bb9cc0706ab5a896158",
+      "cache_file": "scraped_data/docs_card-acceptors.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/card-personal-identification-number-pin": {
+      "title": "PIN Management",
+      "section": "Guides",
+      "content_hash": "6d28bdb7e8a19e23bc461e1cfb9e485e",
+      "cache_file": "scraped_data/docs_card-personal-identification-number-pin.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/card-renewal-and-replacement": {
+      "title": "Card Renewal, Card Replacement & Lost Cards",
+      "section": "Guides",
+      "content_hash": "e08a7c39776261f4d2b98b5882488481",
+      "cache_file": "scraped_data/docs_card-renewal-and-replacement.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/replace-card-field-descriptions-copy": {
+      "title": "Renew Card - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "72af0fa51dac6a8ad1bb2ec4aa07f3fa",
+      "cache_file": "scraped_data/docs_replace-card-field-descriptions-copy.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/replace-card-field-descriptions": {
+      "title": "Replace Card - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "74e2e8cc259e8cfc77e86b50937bf388",
+      "cache_file": "scraped_data/docs_replace-card-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/card-status-codes": {
+      "title": "Card Status Codes",
+      "section": "Guides",
+      "content_hash": "5eec8e991b3a1f42eef4eb908e355b3e",
+      "cache_file": "scraped_data/docs_card-status-codes.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/card-status-field-descriptions": {
+      "title": "Retrieve Card Status - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "3fe6356056f3c9e9bc6495d6be925271",
+      "cache_file": "scraped_data/docs_card-status-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/card-status": {
+      "title": "Card Status",
+      "section": "Guides",
+      "content_hash": "c47acf7e5f75bacd24fb98d4b2003cd3",
+      "cache_file": "scraped_data/docs_card-status.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/card-verification-value-cvv": {
+      "title": "Card Verification Value (CVV2)",
+      "section": "Guides",
+      "content_hash": "a42d8d3945d9040c7e3e5ac1ac1263b8",
+      "cache_file": "scraped_data/docs_card-verification-value-cvv.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/cardholder-details-field-descriptions": {
+      "title": "Cardholder Details - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "c490588021ff310c67dec719473725e3",
+      "cache_file": "scraped_data/docs_cardholder-details-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/create-card-field-descriptions": {
+      "title": "Create Card - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "5230158a292232b227a80190e90929c6",
+      "cache_file": "scraped_data/docs_create-card-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/create-card-2": {
+      "title": "Creating a Card",
+      "section": "Guides",
+      "content_hash": "6b90dde5aaba8ccd69de5c27b6561a5e",
+      "cache_file": "scraped_data/docs_create-card-2.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/master-virtual-cards": {
+      "title": "Master Virtual Cards",
+      "section": "Guides",
+      "content_hash": "432703371fac57dff4d9eebc4cd17467",
+      "cache_file": "scraped_data/docs_master-virtual-cards.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/parent-child-cards": {
+      "title": "Primary and Secondary Cards",
+      "section": "Guides",
+      "content_hash": "9d6ed0999dee1af6edc739c649f03e37",
+      "cache_file": "scraped_data/docs_parent-child-cards.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/get-card-image": {
+      "title": "Get Card Image",
+      "section": "Guides",
+      "content_hash": "bfb7c7e1e6339f295ceb1f90f3086fb3",
+      "cache_file": "scraped_data/docs_get-card-image.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/get-card-limits-card-specific": {
+      "title": "Get Card Limits (Card Level)",
+      "section": "Guides",
+      "content_hash": "4d6f5fbab4808fdce8d77510bfda28a3",
+      "cache_file": "scraped_data/docs_get-card-limits-card-specific.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/get-cards-limits-field-descriptions": {
+      "title": "List Cards Limits - Field Descriptions (Product Level)",
+      "section": "Guides",
+      "content_hash": "6a821f94c56fb45220f890f279583c27",
+      "cache_file": "scraped_data/docs_get-cards-limits-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/get-card-limits": {
+      "title": "Get Card Limits (Product Level)",
+      "section": "Guides",
+      "content_hash": "b65788ddd61c016dc7c96da731efda36",
+      "cache_file": "scraped_data/docs_get-card-limits.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/introduction-to-card-limits": {
+      "title": "Introduction to Card Limits",
+      "section": "Guides",
+      "content_hash": "fc7c972d51c2d3df54146790d3ed46dd",
+      "cache_file": "scraped_data/docs_introduction-to-card-limits.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/set-card-limits": {
+      "title": "Set Card Limits (Card Level)",
+      "section": "Guides",
+      "content_hash": "f722a1b9d82a734d5fd4067fc3249083",
+      "cache_file": "scraped_data/docs_set-card-limits.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/retrieve-a-card": {
+      "title": "Retrieve a Card",
+      "section": "Guides",
+      "content_hash": "87e056ec7aaab6d0ec2a1902fd8677a2",
+      "cache_file": "scraped_data/docs_retrieve-a-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/updating-a-card": {
+      "title": "Updating a card",
+      "section": "Guides",
+      "content_hash": "8204d44e612b68bb816bb8386e015388",
+      "cache_file": "scraped_data/docs_updating-a-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/update-card-field-descriptions": {
+      "title": "Update Card - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "09e8b2f96a3cf3c0a2d45e89a638461c",
+      "cache_file": "scraped_data/docs_update-card-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/contact-us": {
+      "title": "Contact Us",
+      "section": "Guides",
+      "content_hash": "58c10586c4c24793e545b80a9fb8a20d",
+      "cache_file": "scraped_data/docs_contact-us.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/create-card-with-custom-pan-field-descriptions": {
+      "title": "Create Card with Customisable Card Number - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "fd69129add19b7a10fc9d35551691ab4",
+      "cache_file": "scraped_data/docs_create-card-with-custom-pan-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/create-card-with-thredd-generated-card-number": {
+      "title": "Create Card with Thredd Generated Card Number",
+      "section": "Guides",
+      "content_hash": "f381c208f0d9aabae252af9c603a80e4",
+      "cache_file": "scraped_data/docs_create-card-with-thredd-generated-card-number.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/custom-cards": {
+      "title": "Customisable Card Number",
+      "section": "Guides",
+      "content_hash": "26c898422118ec04e3411f59c903d31a",
+      "cache_file": "scraped_data/docs_custom-cards.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/validate-custom-pan-field-descriptions": {
+      "title": "Validate Customisable Card Number - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "61cd890b619ab00f0be7978bfa3df1fc",
+      "cache_file": "scraped_data/docs_validate-custom-pan-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/general-faqs": {
+      "title": "General FAQs",
+      "section": "Guides",
+      "content_hash": "e67e46491a0d91da729fe365f98d8e4d",
+      "cache_file": "scraped_data/docs_general-faqs.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/accessing-the-api": {
+      "title": "Accessing the API",
+      "section": "Guides",
+      "content_hash": "e90ddc3dc54b7e0662d996f8c4fce1d2",
+      "cache_file": "scraped_data/docs_accessing-the-api.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/authenticating-cards-api-with-mtls": {
+      "title": "Accessing the Cards API with mTLS",
+      "section": "Guides",
+      "content_hash": "899b74247b4a5f19606c3b77c1146ede",
+      "cache_file": "scraped_data/docs_authenticating-cards-api-with-mtls.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/getting-started-1": {
+      "title": "Overview",
+      "section": "Guides",
+      "content_hash": "a2d9c0168863c9c7fac294f211f1c4ad",
+      "cache_file": "scraped_data/docs_getting-started-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/integration-steps-set-up-on-production-environment": {
+      "title": "Set up on Production",
+      "section": "Guides",
+      "content_hash": "0776dcef80541d83eec7db1836bf2222",
+      "cache_file": "scraped_data/docs_integration-steps-set-up-on-production-environment.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/onboarding-checklist": {
+      "title": "Go Live Checklist",
+      "section": "Guides",
+      "content_hash": "a7cf11cc59e3a0935a0f36d73fe27256",
+      "cache_file": "scraped_data/docs_onboarding-checklist.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/what-is-idempotency": {
+      "title": "What is Idempotency?",
+      "section": "Guides",
+      "content_hash": "eaa434d3005581bbbdbf96734c2d7345",
+      "cache_file": "scraped_data/docs_what-is-idempotency.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/glossary": {
+      "title": "Glossary",
+      "section": "Guides",
+      "content_hash": "524b5a94f406f61a4c21731a593b8bf6",
+      "cache_file": "scraped_data/docs_glossary.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/merchant-allow-lists": {
+      "title": "Merchant Allow Lists",
+      "section": "Guides",
+      "content_hash": "3216c12b527b2d4e75deb5f2b5bfbed4",
+      "cache_file": "scraped_data/docs_merchant-allow-lists.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/merchant-disallow-lists": {
+      "title": "Merchant Disallow Lists",
+      "section": "Guides",
+      "content_hash": "d218563a850a54db242db886e46e42f9",
+      "cache_file": "scraped_data/docs_merchant-disallow-lists.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/3d-secure": {
+      "title": "3D Secure",
+      "section": "Guides",
+      "content_hash": "9beb6485ed479c15ce884b6765cfde83",
+      "cache_file": "scraped_data/docs_3d-secure.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/card-test-service-cts": {
+      "title": "Card Transaction System (CTS)",
+      "section": "Guides",
+      "content_hash": "38c74592052d6d121e0f3a965bccf879",
+      "cache_file": "scraped_data/docs_card-test-service-cts.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/chargebacks": {
+      "title": "Chargebacks",
+      "section": "Guides",
+      "content_hash": "d720d45fc3a06234636cee69cec01960",
+      "cache_file": "scraped_data/docs_chargebacks.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/external-host-interface-ehi": {
+      "title": "External Host Interface (EHI)",
+      "section": "Guides",
+      "content_hash": "3175cc8fcef27c9519edc1828966bfa1",
+      "cache_file": "scraped_data/docs_external-host-interface-ehi.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/fraud-transaction-monitoring": {
+      "title": "Fraud Transaction Monitoring",
+      "section": "Guides",
+      "content_hash": "c6256f18be2ad2297606f1eee33b3980",
+      "cache_file": "scraped_data/docs_fraud-transaction-monitoring.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/smart-client": {
+      "title": "Smart Client",
+      "section": "Guides",
+      "content_hash": "335e272d7c224dd2328252863b97e23e",
+      "cache_file": "scraped_data/docs_smart-client.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/thredd-portal": {
+      "title": "Thredd Portal: Card and Transaction Management",
+      "section": "Guides",
+      "content_hash": "00bff50163f56d36c296d24e55aed683",
+      "cache_file": "scraped_data/docs_thredd-portal.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/tokenisation": {
+      "title": "Tokenisation (Digital Wallets)",
+      "section": "Guides",
+      "content_hash": "bd3dc743d5927a8fee9b5aba16cd9e5d",
+      "cache_file": "scraped_data/docs_tokenisation.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/transaction-xml-reports": {
+      "title": "Transaction XML Reports",
+      "section": "Guides",
+      "content_hash": "307c9b3342bc6703fcd3f55b514caf85",
+      "cache_file": "scraped_data/docs_transaction-xml-reports.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/virtual-cards": {
+      "title": "Virtual Cards",
+      "section": "Guides",
+      "content_hash": "0cbdf4beff472f57126d7c8b02293508",
+      "cache_file": "scraped_data/docs_virtual-cards.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/getting-product-data": {
+      "title": "Getting Product Data",
+      "section": "Guides",
+      "content_hash": "ecbc798be8e6719cf459b4f8fe39c4a3",
+      "cache_file": "scraped_data/docs_getting-product-data.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/get-card-data-field-descriptions": {
+      "title": "Get Card Data - Field Descriptions",
+      "section": "Guides",
+      "content_hash": "f112b3b5acef4a651de1f4e1cdbafacb",
+      "cache_file": "scraped_data/docs_get-card-data-field-descriptions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/get-encrypted-data": {
+      "title": "Get Card Data",
+      "section": "Guides",
+      "content_hash": "a7fbaf750763a8a07cb946f42a2d1daa",
+      "cache_file": "scraped_data/docs_get-encrypted-data.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/docs/introduction-to-sending-secure-data": {
+      "title": "Introduction to Sending Secure Data",
+      "section": "Guides",
+      "content_hash": "b185fc7a7044266714ec0ab683b2344d",
+      "cache_file": "scraped_data/docs_introduction-to-sending-secure-data.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get_limit_get_limit_get": {
+      "title": "Get Limit",
+      "section": "API Reference",
+      "content_hash": "0593ea1a42139f97735ea4d7d91a07db",
+      "cache_file": "scraped_data/reference_get_limit_get_limit_get.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/set_limit_set_limit_post": {
+      "title": "Set Limit",
+      "section": "API Reference",
+      "content_hash": "bb5f7c0b582fc1ae39a38374b5ad3fde",
+      "cache_file": "scraped_data/reference_set_limit_set_limit_post.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/create-3ds-credentials": {
+      "title": "Create 3DS Credentials",
+      "section": "API Reference",
+      "content_hash": "85256438c792d2b18b641e0513a8ac22",
+      "cache_file": "scraped_data/reference_create-3ds-credentials.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/delete-3ds-credential": {
+      "title": "Delete 3DS Credential.",
+      "section": "API Reference",
+      "content_hash": "ba33b3bce7ee3410cbd4386fc710f945",
+      "cache_file": "scraped_data/reference_delete-3ds-credential.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/list-3ds-credentials": {
+      "title": "List 3DS Credentials.",
+      "section": "API Reference",
+      "content_hash": "fa39a09cd80f6512739dfd8ee5a6ba6e",
+      "cache_file": "scraped_data/reference_list-3ds-credentials.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/list-card-enrollment-details": {
+      "title": "List card enrollment details",
+      "section": "API Reference",
+      "content_hash": "ec911b85f2d46b3fdd0e07f9590b4f09",
+      "cache_file": "scraped_data/reference_list-card-enrollment-details.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/update-3ds-credentials-idempotent": {
+      "title": "Update 3DS Credentials - Idempotent",
+      "section": "API Reference",
+      "content_hash": "8aad522197bfd7f4336ad78ee370bd5d",
+      "cache_file": "scraped_data/reference_update-3ds-credentials-idempotent.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/update-3ds-credentials": {
+      "title": "Update 3DS Credentials",
+      "section": "API Reference",
+      "content_hash": "635a9d9c07842f921849edcfba05086d",
+      "cache_file": "scraped_data/reference_update-3ds-credentials.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-cvv-status": {
+      "title": "Get CVV Status",
+      "section": "API Reference",
+      "content_hash": "c28575c900be45e76ddb0e925eaaf3f0",
+      "cache_file": "scraped_data/reference_get-cvv-status.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-cvv": {
+      "title": "Get CVV",
+      "section": "API Reference",
+      "content_hash": "1f81f4ea1d63b26a3214e8749a1a4c2f",
+      "cache_file": "scraped_data/reference_get-cvv.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/unblock-cvv-idempotent": {
+      "title": "Unblock CVV - Idempotent",
+      "section": "API Reference",
+      "content_hash": "04419c3384c9c4ae8e4dd2b4597112ae",
+      "cache_file": "scraped_data/reference_unblock-cvv-idempotent.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/unblock-cvv": {
+      "title": "Unblock CVV",
+      "section": "API Reference",
+      "content_hash": "d2698f06bd2f9a14497f7482bf5e5651",
+      "cache_file": "scraped_data/reference_unblock-cvv.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-pin-status": {
+      "title": "Get PIN Status",
+      "section": "API Reference",
+      "content_hash": "71739034f14b9a5c4374cb50be3d4ab5",
+      "cache_file": "scraped_data/reference_get-pin-status.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-pin": {
+      "title": "Get PIN",
+      "section": "API Reference",
+      "content_hash": "cb52a442ef027ce192b46f21d161d392",
+      "cache_file": "scraped_data/reference_get-pin.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/set-pin": {
+      "title": "Set PIN",
+      "section": "API Reference",
+      "content_hash": "0385641fcc3c81d6fcf934f2d8f86fca",
+      "cache_file": "scraped_data/reference_set-pin.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/unblock-pin": {
+      "title": "Unblock PIN",
+      "section": "API Reference",
+      "content_hash": "d9637bd494cee6573ad7ff6f8aab2000",
+      "cache_file": "scraped_data/reference_unblock-pin.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-details-for-card-payment-token": {
+      "title": "Get details for a card payment token.",
+      "section": "API Reference",
+      "content_hash": "67620d709dc9a0472c5de67d82a00cdf",
+      "cache_file": "scraped_data/reference_get-details-for-card-payment-token.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-list-of-card-payment-token-devices": {
+      "title": "Get a list of Card Payment Token Devices.",
+      "section": "API Reference",
+      "content_hash": "530f8fa07a72f74c580445c3f0a44dcb",
+      "cache_file": "scraped_data/reference_get-list-of-card-payment-token-devices.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-list-of-card-payment-tokens": {
+      "title": "Get a list of Card Payment Tokens.",
+      "section": "API Reference",
+      "content_hash": "de801c719ffdc65a22b2afbce70f6b08",
+      "cache_file": "scraped_data/reference_get-list-of-card-payment-tokens.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/unbind-device-from-token": {
+      "title": "Unbind a Device From a Token",
+      "section": "API Reference",
+      "content_hash": "e1d303e7f9a1b838ec4d50c4c63207b7",
+      "cache_file": "scraped_data/reference_unbind-device-from-token.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/update-payment-token-status-1": {
+      "title": "Update Payment Token Status",
+      "section": "API Reference",
+      "content_hash": "49724f7ef7068638f84b73244829565c",
+      "cache_file": "scraped_data/reference_update-payment-token-status-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/update-payment-token-status-legacy": {
+      "title": "Update Payment Token Status - Legacy",
+      "section": "API Reference",
+      "content_hash": "2008f648ca9309ee57b5193a6baacf07",
+      "cache_file": "scraped_data/reference_update-payment-token-status-legacy.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/complete-card-replacement-idempotent": {
+      "title": "Complete a Card Replacement - Idempotent",
+      "section": "API Reference",
+      "content_hash": "f41e298894ca6e04dfd3759df483a713",
+      "cache_file": "scraped_data/reference_complete-card-replacement-idempotent.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/complete-card-replacement": {
+      "title": "Complete a Card Replacement",
+      "section": "API Reference",
+      "content_hash": "b00a9daa8691c756818794e5035589dc",
+      "cache_file": "scraped_data/reference_complete-card-replacement.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/convert-card-idempotent": {
+      "title": "Convert Card - Idempotent",
+      "section": "API Reference",
+      "content_hash": "0947f989dbe56a47bbb9b2733f0b71a0",
+      "cache_file": "scraped_data/reference_convert-card-idempotent.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/convert-card": {
+      "title": "Convert Card",
+      "section": "API Reference",
+      "content_hash": "14a8cf996309ae6918105c72c9fa1857",
+      "cache_file": "scraped_data/reference_convert-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/create-bulk-cards": {
+      "title": "Create Bulk Cards",
+      "section": "API Reference",
+      "content_hash": "15b496535ce1ea8d76359f42e551fed4",
+      "cache_file": "scraped_data/reference_create-bulk-cards.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/create-card": {
+      "title": "Create a Card",
+      "section": "API Reference",
+      "content_hash": "e6e9479799bf08c82a892e7a7b6f974e",
+      "cache_file": "scraped_data/reference_create-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-card-control-overrides-or-defaults": {
+      "title": "Get Card Control Overrides or Defaults.",
+      "section": "API Reference",
+      "content_hash": "a429dae8077de332723587c4aeb7827d",
+      "cache_file": "scraped_data/reference_get-card-control-overrides-or-defaults.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-card-image-1": {
+      "title": "Get Card Image",
+      "section": "API Reference",
+      "content_hash": "c6901a752cc7fd43805c468322355ef1",
+      "cache_file": "scraped_data/reference_get-card-image-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-cardholder-details": {
+      "title": "Get Cardholder Details",
+      "section": "API Reference",
+      "content_hash": "8f9b2c46add22e4e53882d29913d0c75",
+      "cache_file": "scraped_data/reference_get-cardholder-details.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/gets-the-bulk-card-progress": {
+      "title": "Gets the bulk card progress.",
+      "section": "API Reference",
+      "content_hash": "f378d01c7089e8e308426f5c21aba008",
+      "cache_file": "scraped_data/reference_gets-the-bulk-card-progress.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/gets-the-bulk-card-tokens": {
+      "title": "Gets the bulk card tokens.",
+      "section": "API Reference",
+      "content_hash": "0b0a214847b1093e6658824e73e25215",
+      "cache_file": "scraped_data/reference_gets-the-bulk-card-tokens.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/gets-the-card-control-overrides": {
+      "title": "Gets the Card Control Overrides.",
+      "section": "API Reference",
+      "content_hash": "2f9987debd798dda9bf0fd3f450643a9",
+      "cache_file": "scraped_data/reference_gets-the-card-control-overrides.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/list-card-balance": {
+      "title": "List Card Balance",
+      "section": "API Reference",
+      "content_hash": "5040da32eec294922531afa1f657d59b",
+      "cache_file": "scraped_data/reference_list-card-balance.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/renew-card": {
+      "title": "Renew a Card",
+      "section": "API Reference",
+      "content_hash": "25e3b5c44549afda20bbf991f25e29fa",
+      "cache_file": "scraped_data/reference_renew-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/replace-card": {
+      "title": "Replace a Card",
+      "section": "API Reference",
+      "content_hash": "35bb98828cd7bfce83521b6cfb6e70e5",
+      "cache_file": "scraped_data/reference_replace-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/retrieve-card-status": {
+      "title": "Retrieve Card Status",
+      "section": "API Reference",
+      "content_hash": "d70d12125451ff3314d835d0d8eebae3",
+      "cache_file": "scraped_data/reference_retrieve-card-status.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/retrieve-card-with-unmasked-pan": {
+      "title": "Retrieve a Card with unmasked PAN",
+      "section": "API Reference",
+      "content_hash": "f695af94a8a4ad940ea32e49994321a0",
+      "cache_file": "scraped_data/reference_retrieve-card-with-unmasked-pan.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/retrieve-card": {
+      "title": "Retrieve a Card",
+      "section": "API Reference",
+      "content_hash": "4daaa14ff6a50fe62fe76b817d3b8f25",
+      "cache_file": "scraped_data/reference_retrieve-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/retrieven-encrypted-card-includes-pannd-cvv": {
+      "title": "Get Encrypted Data",
+      "section": "API Reference",
+      "content_hash": "7764ec71882eac208c0f2c6af2e2f7dc",
+      "cache_file": "scraped_data/reference_retrieven-encrypted-card-includes-pannd-cvv.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/returnllowdisallow-listed-cardcceptors-groupnd-merchants-under-the-group": {
+      "title": "Return allow/disallow listed card acceptors group and merchants under the group",
+      "section": "API Reference",
+      "content_hash": "c397caf921e3894ae6e4805bbb66d726",
+      "cache_file": "scraped_data/reference_returnllowdisallow-listed-cardcceptors-groupnd-merchants-under-the-group.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/update-card-status-idempotent": {
+      "title": "Update Card Status - Idempotent",
+      "section": "API Reference",
+      "content_hash": "3f956a36de5061773c5761f6b91047a8",
+      "cache_file": "scraped_data/reference_update-card-status-idempotent.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/update-card-status": {
+      "title": "Update Card Status",
+      "section": "API Reference",
+      "content_hash": "cec3f61bfecd8471c315f84861e42c1f",
+      "cache_file": "scraped_data/reference_update-card-status.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/update-card-stip-balance-idempotent": {
+      "title": "Update Card STIP Balance - Idempotent",
+      "section": "API Reference",
+      "content_hash": "a4ef3bb493b4c363de1d12405161e262",
+      "cache_file": "scraped_data/reference_update-card-stip-balance-idempotent.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/update-card-stip-balance": {
+      "title": "Update Card STIP Balance",
+      "section": "API Reference",
+      "content_hash": "fc9411e99092300273ee7ec9a87f3056",
+      "cache_file": "scraped_data/reference_update-card-stip-balance.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/update-card": {
+      "title": "Update a Card",
+      "section": "API Reference",
+      "content_hash": "4e8a50ab21d7617e958a4e41133b8cca",
+      "cache_file": "scraped_data/reference_update-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/create-custom-pan-1": {
+      "title": "Create Custom PAN",
+      "section": "API Reference",
+      "content_hash": "bf22a450f75da1eea3869fd3d7a76dc5",
+      "cache_file": "scraped_data/reference_create-custom-pan-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/validate-custom-pan-1": {
+      "title": "Validate Custom PAN",
+      "section": "API Reference",
+      "content_hash": "7bd855a2e69fe4ce13988839507dfe3c",
+      "cache_file": "scraped_data/reference_validate-custom-pan-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/list-card-control-groups-1": {
+      "title": "List Card Control Groups",
+      "section": "API Reference",
+      "content_hash": "7c40e4ca25a90db603e5e4f964273022",
+      "cache_file": "scraped_data/reference_list-card-control-groups-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/update-card-control-groups-1": {
+      "title": "Update Card Control Groups",
+      "section": "API Reference",
+      "content_hash": "e12a5ae07eb3280d8eff5fae4050ace0",
+      "cache_file": "scraped_data/reference_update-card-control-groups-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/update-card-control-groups-idempotent": {
+      "title": "Update Card Control Groups - Idempotent",
+      "section": "API Reference",
+      "content_hash": "2a1e9fe62f3d7f0452ab4fb1ef1d7d38",
+      "cache_file": "scraped_data/reference_update-card-control-groups-idempotent.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/add-merchant-to-allow-list-1": {
+      "title": "Add Merchant to Allow List",
+      "section": "API Reference",
+      "content_hash": "6b548c86da4fa0ce88ed77ff84e6ee70",
+      "cache_file": "scraped_data/reference_add-merchant-to-allow-list-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/add-merchant-to-disallow-list-1": {
+      "title": "Add Merchant to Disallow List",
+      "section": "API Reference",
+      "content_hash": "829797ea802ca2b8ae454421f3c458db",
+      "cache_file": "scraped_data/reference_add-merchant-to-disallow-list-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-allowed-merchants-1": {
+      "title": "Get Allowed Merchants",
+      "section": "API Reference",
+      "content_hash": "fbb5548f052c3842b9b31fa8fb81512f",
+      "cache_file": "scraped_data/reference_get-allowed-merchants-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-disallowed-merchants-1": {
+      "title": "Get Disallowed Merchants",
+      "section": "API Reference",
+      "content_hash": "7f4f6ba4af869c33f181516572a03e1a",
+      "cache_file": "scraped_data/reference_get-disallowed-merchants-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/remove-merchant-from-allow-list-1": {
+      "title": "Remove Merchant from Allow List",
+      "section": "API Reference",
+      "content_hash": "bebaa23b55cdf2e9015d0bc065fbc331",
+      "cache_file": "scraped_data/reference_remove-merchant-from-allow-list-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/remove-merchant-from-disallow-list": {
+      "title": "Remove Merchant from Disallow List",
+      "section": "API Reference",
+      "content_hash": "61ced3256262f60463094f0a6301c4f3",
+      "cache_file": "scraped_data/reference_remove-merchant-from-disallow-list.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-list-of-products-for-given-program-manager-issuer": {
+      "title": "Get list of Products for a given Program Manager / Issuer",
+      "section": "API Reference",
+      "content_hash": "8cc59dc11f4c7a58f4c23e5f6a271f77",
+      "cache_file": "scraped_data/reference_get-list-of-products-for-given-program-manager-issuer.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-product-1": {
+      "title": "Get Product",
+      "section": "API Reference",
+      "content_hash": "16d0db122754554ef538ee3c743cefa1",
+      "cache_file": "scraped_data/reference_get-product-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-product-card-stock": {
+      "title": "Get Product Card Stock",
+      "section": "API Reference",
+      "content_hash": "b8adbc298193241eb11bca1545e01fdb",
+      "cache_file": "scraped_data/reference_get-product-card-stock.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-card-transactions": {
+      "title": "Get Card Transactions",
+      "section": "API Reference",
+      "content_hash": "39cb91b09d656be9ee9f1c70eef3f269",
+      "cache_file": "scraped_data/reference_get-card-transactions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/get-transaction-details-of-single-transaction": {
+      "title": "Get Transaction Details of a single transaction",
+      "section": "API Reference",
+      "content_hash": "87dcae337e75a446f06ffef6ce1cb5a5",
+      "cache_file": "scraped_data/reference_get-transaction-details-of-single-transaction.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/load-or-unload-card": {
+      "title": "Load or Unload Card",
+      "section": "API Reference",
+      "content_hash": "059555bfe4d07630c111c8eeceda9d3f",
+      "cache_file": "scraped_data/reference_load-or-unload-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/errors": {
+      "title": "Errors",
+      "section": "API Reference",
+      "content_hash": "91a7425a99d3d7393d91f3065f013405",
+      "cache_file": "scraped_data/reference_errors.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/introduction-1": {
+      "title": "API Explorer",
+      "section": "API Reference",
+      "content_hash": "cf29598349d97cf0ccf93ad29556f869",
+      "cache_file": "scraped_data/reference_introduction-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/reference/using-postman": {
+      "title": "Using Postman",
+      "section": "API Reference",
+      "content_hash": "62b5e5626300097316b766a2ec944d36",
+      "cache_file": "scraped_data/reference_using-postman.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/recipes/activate-a-card": {
+      "title": "Activate a Card",
+      "section": "Recipes",
+      "content_hash": "49f6c461bbbb7eaed02ff01799e8ced6",
+      "cache_file": "scraped_data/recipes_activate-a-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/recipes/block-a-lost-card": {
+      "title": "Block a Lost Card",
+      "section": "Recipes",
+      "content_hash": "da1e6e7b3a1e34c8b636ec389b6a2d06",
+      "cache_file": "scraped_data/recipes_block-a-lost-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/recipes/create-a-physical-card": {
+      "title": "Create a Physical Card",
+      "section": "Recipes",
+      "content_hash": "1f7d961fe94dc43251687e7285e79f24",
+      "cache_file": "scraped_data/recipes_create-a-physical-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/recipes/get-a-balance-enquiry": {
+      "title": "Get a Balance Enquiry",
+      "section": "Recipes",
+      "content_hash": "441c02e168426d28216c78deeb338df6",
+      "cache_file": "scraped_data/recipes_get-a-balance-enquiry.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/recipes/get-card-transactions": {
+      "title": "Get Card Transactions",
+      "section": "Recipes",
+      "content_hash": "22bc46ef1733a958b8c7890abe44426c",
+      "cache_file": "scraped_data/recipes_get-card-transactions.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/recipes/get-cardholder-details": {
+      "title": "Get Cardholder Details",
+      "section": "Recipes",
+      "content_hash": "8c5e802e8431908000011fe6a0db3d8d",
+      "cache_file": "scraped_data/recipes_get-cardholder-details.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/recipes/load-a-card": {
+      "title": "Load a Card",
+      "section": "Recipes",
+      "content_hash": "521d186a7b89b5e0b0716238903140ce",
+      "cache_file": "scraped_data/recipes_load-a-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/recipes/renew-a-card": {
+      "title": "Renew a Card",
+      "section": "Recipes",
+      "content_hash": "e19325a51119957bfebb2887436f844b",
+      "cache_file": "scraped_data/recipes_renew-a-card.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/recipes/set-pin": {
+      "title": "Set PIN",
+      "section": "Recipes",
+      "content_hash": "1b8d9ede0f813f4c5698242aaf6e63d2",
+      "cache_file": "scraped_data/recipes_set-pin.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-the-5th-june": {
+      "title": "Release Notes for the 5th June",
+      "section": "Changelog",
+      "content_hash": "e35cc76dbf621f3f0dc71809e611f4f6",
+      "cache_file": "scraped_data/changelog_release-notes-for-the-5th-june.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/prn-296": {
+      "title": "PRN-296",
+      "section": "Changelog",
+      "content_hash": "5beba97546d9d818c92f1ec4041d60a8",
+      "cache_file": "scraped_data/changelog_prn-296.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-the-17th-april-1": {
+      "title": "Release Notes for the 17th April",
+      "section": "Changelog",
+      "content_hash": "3e0b82b66e0d21bb2fef85109b70488e",
+      "cache_file": "scraped_data/changelog_release-notes-for-the-17th-april-1.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-the-2nd-april": {
+      "title": "Release Notes for the 2nd April",
+      "section": "Changelog",
+      "content_hash": "6e89d4aac9e8a5e8136adcd36096dd04",
+      "cache_file": "scraped_data/changelog_release-notes-for-the-2nd-april.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-the-20th-february": {
+      "title": "Release Notes for the 20th February",
+      "section": "Changelog",
+      "content_hash": "896b79c157d65683cf1f56861550c3df",
+      "cache_file": "scraped_data/changelog_release-notes-for-the-20th-february.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-the-6th-february": {
+      "title": "Release Notes for the 6th February",
+      "section": "",
+      "content_hash": "e59b4206555a082569f317d325f673d9",
+      "cache_file": "scraped_data/changelog_release-notes-for-the-6th-february.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-the-23rd-january-2026": {
+      "title": "Release Notes for the 23rd January 2026",
+      "section": "",
+      "content_hash": "5e2f76d341a32eb9fe824a33225bd5c9",
+      "cache_file": "scraped_data/changelog_release-notes-for-the-23rd-january-2026.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-the-17th-april": {
+      "title": "Release Notes for the 17th April",
+      "section": "",
+      "content_hash": "a8abc1c3beb696aed453136e774ab380",
+      "cache_file": "scraped_data/changelog_release-notes-for-the-17th-april.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-the-28th-march": {
+      "title": "Release Notes for the 28th March",
+      "section": "",
+      "content_hash": "f19ceaffa14db6f70ef28107e96b352c",
+      "cache_file": "scraped_data/changelog_release-notes-for-the-28th-march.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-the-27th-february": {
+      "title": "Release Notes for the 27th February",
+      "section": "",
+      "content_hash": "f2de983957fbc59b36bca791c0325fa4",
+      "cache_file": "scraped_data/changelog_release-notes-for-the-27th-february.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-7th-february": {
+      "title": "Release Notes for 7th February",
+      "section": "",
+      "content_hash": "c174b337c2c79d3a68c4172e6fcfd5c6",
+      "cache_file": "scraped_data/changelog_release-notes-for-7th-february.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-31st-january": {
+      "title": "Release Notes for 31st January",
+      "section": "",
+      "content_hash": "a2629f012b374e702626e76995b65e83",
+      "cache_file": "scraped_data/changelog_release-notes-for-31st-january.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-13th-december": {
+      "title": "Release Notes for 13th December",
+      "section": "",
+      "content_hash": "8078317a455b2e89dafaca9b6ddd400c",
+      "cache_file": "scraped_data/changelog_release-notes-for-13th-december.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-22nd-november": {
+      "title": "Release Notes for 22nd November",
+      "section": "",
+      "content_hash": "f0dcdc79769b126e73d736edb9a30c8c",
+      "cache_file": "scraped_data/changelog_release-notes-for-22nd-november.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-7th-november-2024": {
+      "title": "Release Notes for 7th November 2024",
+      "section": "",
+      "content_hash": "b44ef777d976f604d12f5a842781a0c9",
+      "cache_file": "scraped_data/changelog_release-notes-for-7th-november-2024.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-20th-september-2024": {
+      "title": "Release Notes for 24th September 2024",
+      "section": "",
+      "content_hash": "f0e035b07e67b3f81a2220da6d4fcb55",
+      "cache_file": "scraped_data/changelog_release-notes-for-20th-september-2024.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-4th-july-2024": {
+      "title": "Release Notes for 4th July 2024",
+      "section": "",
+      "content_hash": "4e87e7e8a51528cbb3ebe904876b7dc5",
+      "cache_file": "scraped_data/changelog_release-notes-for-4th-july-2024.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-21st-june-2024": {
+      "title": "Release Notes for 25th June 2024",
+      "section": "",
+      "content_hash": "a6c5251d09a5629fee4b60e1d3ee78c1",
+      "cache_file": "scraped_data/changelog_release-notes-for-21st-june-2024.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-14th-june-2024": {
+      "title": "Release Notes for 14th June 2024",
+      "section": "",
+      "content_hash": "888d2eb4a50536f447a4a3bddd8ded30",
+      "cache_file": "scraped_data/changelog_release-notes-for-14th-june-2024.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-17th-may-2024": {
+      "title": "Release Notes for 20th May 2024",
+      "section": "",
+      "content_hash": "fedc619516874fcda049215912019afb",
+      "cache_file": "scraped_data/changelog_release-notes-for-17th-may-2024.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-26th-april-2024": {
+      "title": "Release Notes for 26th April 2024",
+      "section": "",
+      "content_hash": "489feba84b47589f2a9640dbd04bb539",
+      "cache_file": "scraped_data/changelog_release-notes-for-26th-april-2024.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-15th-march-2024": {
+      "title": "Release Notes for 15th March 2024",
+      "section": "",
+      "content_hash": "be96aaa1cf07e77efe7371351bbafbf2",
+      "cache_file": "scraped_data/changelog_release-notes-for-15th-march-2024.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-19th-february": {
+      "title": "Release Notes for 23rd February",
+      "section": "",
+      "content_hash": "09aaad931825f12a4769ed9fadd5c102",
+      "cache_file": "scraped_data/changelog_release-notes-for-19th-february.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-19th-january-2024": {
+      "title": "Release Notes for 19th January 2024",
+      "section": "",
+      "content_hash": "c865f84c34de1ce202748bf9ccb8b349",
+      "cache_file": "scraped_data/changelog_release-notes-for-19th-january-2024.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-12th-january-2024": {
+      "title": "Release Notes for 12th January 2024",
+      "section": "",
+      "content_hash": "228fa3ce267bc7beff80ece597585526",
+      "cache_file": "scraped_data/changelog_release-notes-for-12th-january-2024.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-15th-december-2023": {
+      "title": "Release Notes for 15th December 2023",
+      "section": "",
+      "content_hash": "68966069c09e51c95dbe87719fc0047d",
+      "cache_file": "scraped_data/changelog_release-notes-for-15th-december-2023.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-3rd-november-2023": {
+      "title": "Release Notes for 3rd November 2023",
+      "section": "",
+      "content_hash": "31551a923b1a71a32cc7240208e509bd",
+      "cache_file": "scraped_data/changelog_release-notes-for-3rd-november-2023.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-13th-october-2023": {
+      "title": "Release Notes for 13th October 2023",
+      "section": "",
+      "content_hash": "bf0d1ed563a3f135efb18a52dc0e3823",
+      "cache_file": "scraped_data/changelog_release-notes-for-13th-october-2023.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-29th-september-2023": {
+      "title": "Release Notes for 29th September 2023",
+      "section": "",
+      "content_hash": "67c01b1ab8fdef7f53ba14731fc9cbdd",
+      "cache_file": "scraped_data/changelog_release-notes-for-29th-september-2023.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-15th-september-2023": {
+      "title": "Release Notes for 15 September 2023",
+      "section": "",
+      "content_hash": "4c273d44ac2f9f05370bcf1c89c6a43e",
+      "cache_file": "scraped_data/changelog_release-notes-for-15th-september-2023.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/latest-changes": {
+      "title": "Release Notes for 14 July 2023",
+      "section": "",
+      "content_hash": "d2fc4a47d54444e3a4c7e6a3c244a9f5",
+      "cache_file": "scraped_data/changelog_latest-changes.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-4-july-2023": {
+      "title": "Release Notes for 7 July 2023",
+      "section": "",
+      "content_hash": "a3dce613c0f7fa0dc0694d7e331cb863",
+      "cache_file": "scraped_data/changelog_release-notes-for-4-july-2023.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-26-may-2023": {
+      "title": "Release Notes for 26 May 2023",
+      "section": "",
+      "content_hash": "41ddb8b8536b8aee58008d3d13883a22",
+      "cache_file": "scraped_data/changelog_release-notes-for-26-may-2023.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-28-april-2023": {
+      "title": "Release Notes for 28 April 2023",
+      "section": "",
+      "content_hash": "9a020a71151323205c34acd435e94b94",
+      "cache_file": "scraped_data/changelog_release-notes-for-28-april-2023.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-6-april-2023": {
+      "title": "Release Notes for 6 April 2023",
+      "section": "",
+      "content_hash": "11f6ee8926b319ad7cbebfdf48c56837",
+      "cache_file": "scraped_data/changelog_release-notes-for-6-april-2023.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-31-march-2023": {
+      "title": "Release Notes for 31 March 2023",
+      "section": "",
+      "content_hash": "bd2f67fd1b569d7b1736312ff5b2473f",
+      "cache_file": "scraped_data/changelog_release-notes-for-31-march-2023.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes": {
+      "title": "Release Notes for 17 February 2023",
+      "section": "",
+      "content_hash": "10114131fbd3084b5aac8ca944697a37",
+      "cache_file": "scraped_data/changelog_release-notes.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-26-january-2023": {
+      "title": "Release Notes for 27 January 2023",
+      "section": "",
+      "content_hash": "f98b0352984ff49fd3481cc2a23454b0",
+      "cache_file": "scraped_data/changelog_release-notes-for-26-january-2023.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-25-november-2022": {
+      "title": "Release Notes for 25 November 2022",
+      "section": "",
+      "content_hash": "3542f02c2172de60817bdefb213e1c11",
+      "cache_file": "scraped_data/changelog_release-notes-for-25-november-2022.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-11-november-2022": {
+      "title": "Release Notes for 11 November 2022",
+      "section": "",
+      "content_hash": "f89e9ea28b1a830cc0987879586f24ee",
+      "cache_file": "scraped_data/changelog_release-notes-for-11-november-2022.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-28-october-2022": {
+      "title": "Release Notes for 28 October 2022",
+      "section": "",
+      "content_hash": "a019a5c6a94a024782f0cedfd542a1df",
+      "cache_file": "scraped_data/changelog_release-notes-for-28-october-2022.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-14-october-2022": {
+      "title": "Release Notes for 14 October 2022",
+      "section": "",
+      "content_hash": "f13d89cd864e13400b22592ff06296e4",
+      "cache_file": "scraped_data/changelog_release-notes-for-14-october-2022.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-30-september-2022": {
+      "title": "Release Notes for 30 September 2022",
+      "section": "",
+      "content_hash": "3b24079717b58d0bc95aa1af952342f5",
+      "cache_file": "scraped_data/changelog_release-notes-for-30-september-2022.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-16-september": {
+      "title": "Release Notes for 16 September",
+      "section": "",
+      "content_hash": "88f7031a1ab28bd9d9ecb770c3fe6955",
+      "cache_file": "scraped_data/changelog_release-notes-for-16-september.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/release-notes-for-2-september-2022": {
+      "title": "Release Notes for 2 September 2022",
+      "section": "",
+      "content_hash": "df172e0165db4127f7d71406030ea9fc",
+      "cache_file": "scraped_data/changelog_release-notes-for-2-september-2022.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/whats-changed-19-august-2022": {
+      "title": "Release Notes for 19 August 2022",
+      "section": "",
+      "content_hash": "7767e7565e37f203f0371ce371e77867",
+      "cache_file": "scraped_data/changelog_whats-changed-19-august-2022.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    },
+    "https://cardsapidocs.thredd.com/changelog/whats-changed": {
+      "title": "Release Notes for 12 August 2022",
+      "section": "",
+      "content_hash": "fd3a6a43edac68a04d33e3344648ae49",
+      "cache_file": "scraped_data/changelog_whats-changed.md",
+      "fetched_at": "2026-06-15T12:27:31.282567+00:00"
+    }
+  }
+}

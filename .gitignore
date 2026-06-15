@@ -12,6 +12,7 @@ ENV/
 
 # Python
 __pycache__/
+__pycache__/
 *.py[cod]
 *$py.class
 *.so
@@ -57,6 +58,14 @@ Thumbs.db
 # Database
 *.db
 *.sqlite3
+
+# FAISS vector store — a Python pickle, rebuilt server-side on first boot from the
+# committed cache below. Don't ship pickles through git (binary churn + deserialization risk).
+faiss_index/
+faiss_index.sig
+
+# NOTE: scraped_data/ + scrape_manifest.json ARE committed on purpose so production
+# (deployed via `git pull`) has the doc corpus without scraping the network on boot.
 
 # Misc
 *.pem

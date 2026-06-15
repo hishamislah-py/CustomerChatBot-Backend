@@ -1,10 +1,9 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from app import CustomerCareChatbot
-from fastapi.responses import JSONResponse
 
-app = FastAPI()
+app = FastAPI(title="Thredd Cards API Documentation Assistant")
 
 # Allow CORS for local frontend development
 app.add_middleware(
@@ -15,36 +14,57 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize chatbot (singleton for app lifetime)
-# Force rebuild to avoid pickle compatibility issues between environments
-chatbot = CustomerCareChatbot(force_rebuild=True)
+# Initialize chatbot (singleton for app lifetime).
+# force_rebuild=False so startup loads the cached scrape + FAISS index instead of
+# re-scraping ~150 pages on every boot. The first-ever boot (no cache) scrapes once.
+chatbot = CustomerCareChatbot(force_rebuild=False)
+
 
 class QueryRequest(BaseModel):
     question: str
+    session_id: str = "default"
+
 
 @app.post("/query")
 async def query_chatbot(request: QueryRequest):
-    response = chatbot.query(request.question)
+    response = chatbot.query(request.question, request.session_id)
     return {"answer": response}
 
+
 @app.post("/refresh")
-async def refresh_documents():
-    chatbot.refresh_documents()
-    return {"status": "Document index refreshed!"}
+async def refresh_documents(background_tasks: BackgroundTasks):
+    # Re-scraping the docs can take ~1-2 minutes; run it in the background.
+    background_tasks.add_task(chatbot.refresh_knowledge_base)
+    return {"status": "Documentation refresh started. This may take a couple of minutes."}
+
 
 @app.get("/documents")
 async def list_documents():
     metadata = chatbot.load_metadata()
-    if not metadata:
-        return {"documents": []}
+    pages = metadata.get("pages", {}) if isinstance(metadata, dict) else {}
     docs = []
-    for filename, info in metadata.items():
+    for url, info in pages.items():
         docs.append({
-            "filename": filename,
-            "path": info["path"],
-            "last_modified": info["last_modified"]
+            "title": info.get("title"),
+            "url": url,
+            "section": info.get("section"),
+            "fetched_at": info.get("fetched_at"),
         })
-    return {"documents": docs}
+    return {"documents": docs, "count": len(docs)}
+
+
+@app.get("/scrape-status")
+async def scrape_status():
+    metadata = chatbot.load_metadata()
+    if not isinstance(metadata, dict) or not metadata.get("pages"):
+        return {"scraped": False}
+    return {
+        "scraped": True,
+        "scraped_at": metadata.get("scraped_at"),
+        "base_url": metadata.get("base_url"),
+        "page_count": len(metadata.get("pages", {})),
+    }
+
 
 @app.get("/health")
 async def health_check():

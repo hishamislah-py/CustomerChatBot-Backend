@@ -8,6 +8,7 @@ langchain-core
 langchain-huggingface
 sentence-transformers
 faiss-cpu
+requests
 pypdf
 docx2txt
 fastapi
