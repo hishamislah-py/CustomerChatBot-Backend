@@ -1,0 +1,5 @@
+# 6.4 Handling Cardholder Queries
+
+Your cardholders should have a means to contact you directly to raise queries about a transaction on their account. This is typically via a call centre number printed on their card[1  You can configure the contact number printed or displayed on your card products.](#) or advertised on your website. Alternatively, your customer mobile app or portal may provide a form to enable customers to raise a support ticket, which is handled via your customer app or a dedicated system.
+
+When a cardholder queries a transaction, you can use the [Thredd Portal![Closed](../../Skins/Default/Stylesheets/Images/transparent.gif) Thredd Portal is Thredd's new web application for managing your cards and transactions on the Thredd Platform.](#) application to view details of the transaction. For more information, see the [Thredd Portal Guide](https://docs.thredd.ai/Thredd_Portal_Guide.htm).

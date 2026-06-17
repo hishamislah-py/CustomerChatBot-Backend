@@ -1,0 +1,27 @@
+# Document History
+
+This section provides details of what has changed since the previous document release.
+
+| Version | Date | Description | Revised by |
+| --- | --- | --- | --- |
+| 1.3 | 07/10/2025 | Added details on configuring the OTP email template. See see [Appendix 2: OTP Message Templates](../Reference_Apata/OTP_Message_Templates.htm).  Added an FAQ entry on [How do we set up OTP email so that the cardholder receives an email from our email domain?](../FAQs_Apata.htm) | WS |
+| 16/06/2025 | Added descriptions on creating, editing, and publishing draft risk profiles. Included descriptions on backtesting. See [Creating a draft risk profile](../Apata_Portal/Authentication.htm#Draft) and [Backtesting risk profiles](../Apata_Portal/Merchant_Simulator.htm#Backtest). | KD |
+| 16/04/2025 | Correction to the Thredd.Notifier.Receiver URL for use in the UAT Environment. See [Authorising Thredd IP Addresses](Authorising_IP_Addresses.htm). | WS |
+| 11/02/2025 | Added notes to clarify the effect of passing an empty space as a value in specific fields in the 3D Secure Configuration (Apata) (`Ws_ApataCardLevelConfigurations`) web service. See [Using the Card Configuration API](Using_Card_Configuration_API.htm). | WS |
+| 11/02/2025 | Added references to Thredd Portal, our new web application for managing your cards and transactions. | KD |
+| 03/02/2025 | Added a new web service, (`Ws_GetApataCardLevelConfigurations`) to be used to retrieve the card level configuration for Apata. See [Using the Get Card Level Configuration API](Using_Get_Card_Configuration_API.htm). | WS |
+| 03/01/2025 | Added a Note on 3D-Secure unenrolment in the [General FAQs](../FAQs_Apata.htm). Clarified explanations of enrolment and unenrolment (see [Enroling your Cards in 3D-Secure](Enrol_cards_in_3DSecure.htm#_Enrol_cards_in_3D_Secure)). | KD |
+| 13/08/2024 | Corrections to sample examples in [Initiating a Biometric Session](Using_Biometric_API_Apata.htm#_Initiating_a_Biometric) and [Cancelling an authentication](Using_Biometric_API_Apata.htm#Cancelli) sections. | WS |
+| 26/06/2024 | Updated the [company address](../Contact.htm). | PC |
+| 1.2 | 24/04/2024 | Corrected name of heading to describe HTTP response in [Using the Delegated SMS API](Using_Delegates_SMS_API.htm). | KD |
+| 04/04/2024 | Added descriptions of client-managed OTP SMS authentication. This includes:   * An update to the [Authentication method](Introduction.htm#Authenti) section. * A new sub-section in [Cardholder Authentication Flows.](Cardholder_Authentication_Flows.htm#top) * Changes to steps in a [3D-Secure Project](Steps_in_a_3D_Secure_project.htm#_Steps_in_a). * A new section on using the [Delegated SMS API](Using_Delegates_SMS_API.htm#_Using_the_Biometric). * A new page on the [[Delegate OTP Messag](../Reference_Apata/DelegateOTPNotification_Message_Fields.htm#_Appendix_4:_Biometric/OOB)e](../Reference_Apata/DelegateOTPNotification_Message_Fields.htm#_Appendix_4:_Biometric/OOB) fields. | KD |
+| 1.1 | 21/03/2024 | Updates to content and graphics to align with taxonomy updates on our Documentation Portal. | KD |
+| 13/03/2024 | Updates to endpoint URLs and examples in [Using the Biometric/In-App Authentication APIs](Using_Biometric_API_Apata.htm#_Using_the_Biometric). Updates to a field name in the Delegate SCAValidation Message Fields. | KD |
+| 22/02/2024 | Corrections to diagrams. These include:   * [Figure 3: 3D Secure Authentication Process â Using 3D Secure and Biometrics or Out of Band (OOB).](Cardholder_Authentication_Flows.htm#3D) * [Figure 7: OTP SMS Challenge Screen Customisation](Challenge_screens.htm#OTP) * [Figure 11: 3D Secure Authentication Screens - for Biometric](Configuration_of_Screens.htm#3D) | KD |
+| 21/02/2023 | Added details of how to add, update or delete card level configurations for Apata, such as the language of the Apata Challenge screens and the Challenge Profile to use. See [Using the Card Configuration API](Using_Card_Configuration_API.htm). | WS |
+| 16/02/2024 | Removed information on report settings. Updated description on adding reports to email in [Analytics](../Apata_Portal/Analytics.htm#top). | KD |
+| 08/02/2024 | Included updated descriptions on Knowledge Based Authentication in [Cardholder Authentication Flows](Cardholder_Authentication_Flows.htm), added the Production API endpoints to [Authorising Thredd IP Addresses](Authorising_IP_Addresses.htm), updated reference details in [Appendix 6: Biometric OOB Fields.](../Reference_Apata/Biometric_OOB_Fields.htm) | KD |
+| 08/01/2024 | Correction to [Figure 1: Flowchart of Parties involved 3D Secure](Parties_in_3DSecure.htm). | KD |
+| 05/01/2024 | Added Biometric endpoint content on Apata. This includes updates in the following areas:   * Summary of steps for Biometric and OOB in [Completing Your 3DS Product Setup Form](Steps_in_a_3D_Secure_project.htm). * Step-by-step instructions on using the APIs in [Using the Biometric/In-App Authentication APIs.](Using_Biometric_API_Apata.htm) * Reference information in [Appendix 6: Biometric OOB Fields.](../Reference_Apata/Biometric_OOB_Fields.htm) * IP address information in [Authorising Thredd IP Addresses.](Authorising_IP_Addresses.htm) | KD |
+| 1.0 | 23/11/2023 | Updates to the description of the fields in the Product Setup Form (PSF), added sections describing new features on the Apata Portal, plus other corrections. | WS |
+| 01/11/2023 | First version of 3D Secure Guide for Apata. | WS |

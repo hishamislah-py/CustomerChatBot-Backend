@@ -4,11 +4,14 @@ langchain-classic
 langchain-community
 langchain-text-splitters
 langchain-groq
+langchain-openai
 langchain-core
 langchain-huggingface
 sentence-transformers
 faiss-cpu
 requests
+beautifulsoup4
+markdownify
 pypdf
 docx2txt
 fastapi

@@ -5,7 +5,7 @@ from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain_groq import ChatGroq
+from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder, PromptTemplate
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_classic.chains.retrieval import create_retrieval_chain
@@ -15,6 +15,7 @@ from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.messages import HumanMessage, AIMessage
 from scraper import ThreddDocsScraper
+from scraper_portal import ThreddPortalScraper
 import pickle
 import hashlib
 import json
@@ -30,7 +31,10 @@ class CustomerCareChatbot:
         # Knowledge base is now scraped from the Thredd Cards API docs; the scraper owns
         # this manifest (web analogue of the old document_metadata.json).
         self.metadata_file = "scrape_manifest.json"
+        # Two knowledge-base sources: the Cards API docs (ReadMe.io) and the broader
+        # technical documentation portal (docs.thredd.ai, MadCap Flare).
         self.scraper = ThreddDocsScraper()
+        self.portal_scraper = ThreddPortalScraper()
 
         # Initialize memory store for different sessions
         self.store: Dict[str, BaseChatMessageHistory] = {}
@@ -52,11 +56,11 @@ class CustomerCareChatbot:
     
     def initialize_components(self):
         """Initialize all necessary components"""
-        # Initialize Groq LLM
-        self.llm = ChatGroq(
+        # Initialize OpenAI LLM (model configurable via OPENAI_MODEL, defaults to gpt-4o-mini)
+        self.llm = ChatOpenAI(
             temperature=0.3,
-            model_name="llama-3.1-8b-instant",
-            api_key=os.getenv("GROQ_API_KEY")
+            model=os.getenv("OPENAI_MODEL") or "gpt-4o-mini",
+            api_key=os.getenv("OPENAI_API_KEY")
         )
         
         # Initialize embedding model (free HuggingFace model)
@@ -174,8 +178,11 @@ class CustomerCareChatbot:
             return []
     
     def load_web_documents(self, force_rebuild=False):
-        """Scrape the Thredd Cards API docs. Returns (documents, changed)."""
-        return self.scraper.scrape_all(force=force_rebuild)
+        """Scrape both Thredd docs sources (Cards API + portal). Returns (documents, changed)."""
+        docs_api, changed_api = self.scraper.scrape_all(force=force_rebuild)
+        docs_portal, changed_portal = self.portal_scraper.scrape_all(force=force_rebuild)
+        print(f"Loaded {len(docs_api)} Cards API pages + {len(docs_portal)} portal pages")
+        return docs_api + docs_portal, (changed_api or changed_portal)
 
     def process_documents(self, force_rebuild=False):
         """Scrape the Thredd Cards API documentation and (re)build the vector store."""
@@ -236,16 +243,19 @@ class CustomerCareChatbot:
             print("No vector store available. Please ensure customer care documents are processed first.")
             return
 
-        # Create retriever with more relevant documents for customer care
+        # Create retriever with more relevant documents for customer care.
+        # k bumped to 8 now that the corpus spans both the Cards API docs and the
+        # full Thredd documentation portal (~15k chunks).
         retriever = self.vectorstore.as_retriever(
             search_type="similarity",
-            search_kwargs={"k": 6}  # Increased for better customer care context
+            search_kwargs={"k": 8}
         )
 
-        # Contextualize question prompt for the Thredd Cards API docs
+        # Contextualize question prompt for the Thredd documentation
         contextualize_q_system_prompt = """Given a chat history and the latest user question
-        about the Thredd Cards API (cards, cardholders, 3D Secure, card controls,
-        tokenisation, transactions, API endpoints, fields, error codes, integration, etc.),
+        about Thredd's platform and documentation (cards, cardholders, 3D Secure, PSD2/SCA,
+        card controls, tokenisation, transactions, EHI, web services, reporting, chargebacks,
+        fraud, the Thredd Portal, API endpoints, fields, error codes, integration, etc.),
         formulate a standalone question which can be understood without the chat history.
 
         IMPORTANT: For simple greetings like "Hi", "Hello", "Good morning", "Thank you", etc.,
@@ -265,26 +275,30 @@ class CustomerCareChatbot:
             self.llm, retriever, contextualize_q_prompt
         )
 
-        # Thredd Cards API documentation assistant prompt
-        qa_system_prompt = """You are the Thredd Cards API Documentation Assistant.
+        # Thredd documentation assistant prompt
+        qa_system_prompt = """You are the Thredd Documentation Assistant.
         You help developers and integration teams by answering questions strictly from the
-        official Thredd Cards API documentation (https://cardsapidocs.thredd.com). Topics include:
+        official Thredd documentation — both the Cards API docs (https://cardsapidocs.thredd.com)
+        and the Thredd technical documentation portal (https://docs.thredd.ai). Topics include:
 
         💳 Cards & Cardholders: creating, retrieving, updating, replacing, renewing cards; PINs, CVV, card status
-        🔐 Security: 3D Secure enrolment, mTLS authentication, sending secure data
+        🔐 Security & Compliance: 3D Secure, PSD2 / SCA (Strong Customer Authentication) and exemptions, mTLS, secure data
         🎛️ Card Controls & Limits: control groups, card limits, balances
         🔁 Tokenisation: payment tokens, binding/unbinding, card images
+        🔌 EHI & Web Services: External Host Interface, web service operations, fields, WSDL
+        📊 Reporting & Transactions: transaction XML, balance/cardholder XML, reporting guides
+        ⚖️ Operations: chargebacks, fraud, fees, the Thredd Portal, Smart Client, back office
         🌐 API Reference: endpoints, request/response fields, parameters, status/error codes
-        🧩 Integration: getting started, accessing the API, products and services
+        🧩 Integration: getting started, connecting to Thredd, implementation project stages, products and services
 
         STRICT SCOPE — READ THIS FIRST:
-        You are NOT a general-purpose assistant. You answer ONLY using the Thredd Cards API
-        documentation provided in the context below. You must NOT use any outside knowledge,
-        general world knowledge, or training data to answer.
-        - If a question is about anything other than the Thredd Cards API (e.g. people, history,
-          geography, politics, general trivia, other companies/products, coding help unrelated
-          to the Thredd Cards API, opinions, current events), you MUST refuse — even if you
-          know the answer. Do NOT explain, guess, or offer alternatives about the off-topic subject.
+        You are NOT a general-purpose assistant. You answer ONLY using the Thredd documentation
+        provided in the context below. You must NOT use any outside knowledge, general world
+        knowledge, or training data to answer.
+        - If a question is about anything other than Thredd's platform/documentation (e.g. people,
+          history, geography, politics, general trivia, other companies/products, coding help
+          unrelated to Thredd, opinions, current events), you MUST refuse — even if you know the
+          answer. Do NOT explain, guess, or offer alternatives about the off-topic subject.
         - If a question is on-topic but the answer is not in the provided context, say you
           couldn't find it in the documentation.
         - Never invent endpoints, fields, parameters, or behaviour that is not in the context.
@@ -293,12 +307,12 @@ class CustomerCareChatbot:
 
         1. **For Greetings & Pleasantries** ("Hi", "Hello", "Good morning", "Thank you"):
            - Treat each greeting as a fresh interaction
-           - Respond: "Hello! I'm the Thredd Cards API documentation assistant. Ask me anything about the Cards API — cards, 3D Secure, tokenisation, endpoints, fields, and more. How can I help?"
+           - Respond: "Hello! I'm the Thredd documentation assistant. Ask me anything about Thredd — cards, 3D Secure, PSD2/SCA, tokenisation, EHI, web services, reporting, the Thredd Portal, API endpoints, and more. How can I help?"
            - Do NOT reference previous conversations or say "again" or "still here"
 
-        2. **For Off-Topic / Out-of-Scope Questions** (anything not about the Thredd Cards API):
+        2. **For Off-Topic / Out-of-Scope Questions** (anything not about Thredd):
            - Do NOT answer from general knowledge. Do NOT speculate about who/what the subject might be.
-           - Reply ONLY with: "I can only help with questions about the Thredd Cards API. I don't have anything about that. Try asking about cards, cardholders, 3D Secure, card controls, tokenisation, or the API endpoints."
+           - Reply ONLY with: "I can only help with questions about Thredd. I don't have anything about that. Try asking about cards, 3D Secure, PSD2/SCA, tokenisation, EHI, web services, reporting, or the API endpoints."
            - Do not add any extra information about the off-topic subject.
 
         3. **For On-Topic Technical Questions**:
@@ -310,14 +324,14 @@ class CustomerCareChatbot:
 
         4. **Always Cite Sources** (for on-topic answers drawn from the context):
            - End the answer with a "Sources:" line listing the page title(s) and URL(s) from the context, e.g.
-             "Sources: Introduction to 3D Secure (https://cardsapidocs.thredd.com/docs/introduction-to-3d-secure)"
+             "Sources: PSD2 Rules (https://docs.thredd.ai/psd/Content/PSD2/PSD2_Rules.htm)"
 
         5. **If On-Topic But Not in the Documentation**:
-           - Respond: "I couldn't find that in the Thredd Cards API documentation. Please check https://cardsapidocs.thredd.com or contact Thredd support."
+           - Respond: "I couldn't find that in the Thredd documentation. Please check https://docs.thredd.ai or https://cardsapidocs.thredd.com, or contact Thredd support."
 
         6. **Tone**: Professional, precise, and helpful — like good developer documentation.
 
-        Context from the Thredd Cards API documentation:
+        Context from the Thredd documentation:
         {context}"""
 
         qa_prompt = ChatPromptTemplate.from_messages([
@@ -360,7 +374,7 @@ class CustomerCareChatbot:
             )
             return response["answer"]
         except Exception as e:
-            return f"I apologize, but I encountered an error while processing your request: {str(e)}. Please try again, or see https://cardsapidocs.thredd.com."
+            return f"I apologize, but I encountered an error while processing your request: {str(e)}. Please try again, or see https://docs.thredd.ai."
     
     def clear_memory(self, session_id="default"):
         """Clear conversation memory for a specific session"""

@@ -1,0 +1,41 @@
+# Document History
+
+This section provides details of what has changed since the previous document release.
+
+| Version | Date | Reason | Revised by |
+| --- | --- | --- | --- |
+| 1.6 | 14/05/2026 | Included the following new elements: `NetworkTransactionId`, `NetworkTransactionId2`, `NetworkRelatedTransactionId`, and `NetworkLinkValidation` in [CardAuthorisation](Schema/CardAuthorisation.htm) and [CardOnlineFinancial](Schema/CardOnlineFinancial.htm) and [CardFinancial](Schema/CardFinancial.htm). Added description to [Sub-Elements and Attributes](Schema/Sub_Elements_and_Attributes.htm). Included new CLR and NCLR schemas (see [Non-Clearing Report XML Schema](Reference/Non-Clearing_Report_XML_Schema.htm#top) and [Clearing Report XML Schema](Reference/Clearing_Report_XML_Schema.htm)). | KD |
+| 11/03/2026 | Added `VATAmt` description and examples to [CardFees](Schema/CardFee_CLR.htm), [CardFinancial](Schema/CardFinancial.htm), [CardOnlineFinancial](Schema/CardOnlineFinancial.htm). Included `Traceid_Lifecycle` description in [CardFinancial](Schema/CardFinancial.htm), [CardChrgBackRepRes](Schema/CardChrgBackRepRes.htm#top). [CardOnlineFinancial](Schema/CardOnlineFinancial.htm#top), and [CardAuthorisation](Schema/CardAuthorisation.htm). .Added description to [Sub-Elements and Attributes](Schema/Sub_Elements_and_Attributes.htm). Included new CLR and NCLR schemas (see [Non-Clearing Report XML Schema](Reference/Non-Clearing_Report_XML_Schema.htm#top) and [Clearing Report XML Schema](Reference/Clearing_Report_XML_Schema.htm)). | KD |
+| 06/11/2025 | The following attributes under the `TXN` element are now optional: `cardholderpresent`, `cardpresent`, `cardinputmethod`, `cardauthmethod`, and `cardauthentity`. These attributes under the `Term` element are also now optional: `inputcapability` and `authcapability`. See [Sub-Elements and Attributes](Schema/Sub_Elements_and_Attributes.htm). | KD |
+| 03/11/2025 | Included `AcquirerCountry` description and examples to [CardAuthorisation](Schema/CardAuthorisation.htm), [CardFinancial](Schema/CardFinancial.htm), and [CardOnlineFinancial](Schema/CardOnlineFinancial.htm). Added description to [Sub-Elements and Attributes](Schema/Sub_Elements_and_Attributes.htm). Included new CLR and NCLR schemas (see [Non-Clearing Report XML Schema](Reference/Non-Clearing_Report_XML_Schema.htm#top) and [Clearing Report XML Schema](Reference/Clearing_Report_XML_Schema.htm)). | KD |
+| 1.5 | 24/09/2025 | Clarified descriptions of `LocalDate` to specify that it is the date and time within the local timezone. See [Sub-elements and Attributes](Schema/Sub_Elements_and_Attributes.htm#LocalDat) as an example. | KD |
+| 15/09/2025 | Updated CLR schema where `DE94_Txn_Orig_ID` now supports a maximum of 16 characters. See [Clearing Report XML Schema](Reference/Clearing_Report_XML_Schema.htm). | KD |
+| 30/07/2025 | Added new NCLR and CLR schemas where `maskedPAN` is now required. Specified `maskedPAN` as required in the `Card` element. See [Non-Clearing Report XML Schema](Reference/Non-Clearing_Report_XML_Schema.htm#top) and [Clearing Report XML Schema](Reference/Clearing_Report_XML_Schema.htm) and [Sub-Elements and Attributes](Schema/Sub_Elements_and_Attributes.htm#Card). | KD |
+| 28/07/2025 | Added new NCLR and CLR schemas where the `cardholderpresent`, `cardpresent`, and `cardinput` attributes include empty fields to support null values. Updated descriptions for the TXN element where these attributes exist. See [Non-Clearing Report XML Schema](Reference/Non-Clearing_Report_XML_Schema.htm#top) and [Clearing Report XML Schema](Reference/Clearing_Report_XML_Schema.htm) and [Sub-Elements and Attributes.](Schema/Sub_Elements_and_Attributes.htm#Txn) | KD |
+| 12/06/2025 | Added NCLR and CLR schemas where country and currency codes are removed (see [Non-Clearing Report XML Schema](Reference/Non-Clearing_Report_XML_Schema.htm#top) and [Clearing Report XML Schema](Reference/Clearing_Report_XML_Schema.htm)). Removed country and currency codes reference sections. | JB |
+| 01/05/2025 | Added the `MaskedPAN` to the [Card](Schema/Sub_Elements_and_Attributes.htm#Card) sub-element. Changed the NCLR and CLR schemas, and included new examples. See [PRN-222](https://docs.thredd.com/GPSPRN.htm) | KD |
+| 30/04/2025 | Updated the description of the SchemeSettlementDate element. See [Sub-elements and Attributes](Schema/Sub_Elements_and_Attributes.htm#SchemeSe). | WS |
+| 10/04/2025 | Added currency code for the Caribbean Guilder currency (XCG) for Curacao and Sint Maartens that replaces Netherlands Antillean guilder (see [ISO Currency Codes](Reference/ISO_Currency_Codes.htm)). Added Curacao and Sint Maartens to the currency list for this new currency. | KD |
+| 06/03/2025 | Added references to the Discover network. Also included new elements and sub-elements that are used in the Discover network. Indicated elements that are not applicable to the Discover network. | KD |
+| 13/02/2025 | Added references to Thredd Portal, our new online portal for managing your cards and transactions. | KD |
+| 06/02/2025 | For the [Non-Clearing Report](Reference/Non-Clearing_Report_XML_Schema.htm#top) and [Clearing Report](Reference/Clearing_Report_XML_Schema.htm#Clearing) schema child elements, amended data types and removed child elements that are no longer in use. Amended and removed child elements in various records. | KD |
+| 28/01/2025 | Updated the description of `LocalDateUTC` in [CardAuthorisatio](Schema/CardAuthorisation.htm)n and the [CardFinancial](Schema/CardFinancial.htm) to indicate that it is the time and date of the matching authorisation. Added `LocalDateUTC` with examples to [Sub-Elements and Attributes](Schema/Sub_Elements_and_Attributes.htm). | KD |
+| 09/01/2025 | Added descriptions on the REG suffix used in filenames of regenerated reports. See [File Naming Convention](Getting_Started/Transactional_Data_Files_newreport.htm#File2) | KD |
+| 13/12/2024 | Updated FIID Element to indicate that it is not required. See [CardChrdBackRepRes](Schema/CardChrgBackRepRes.htm) | KD |
+| 11/12/2024 | Updated the maximum length of the `location` field in the `Term` element to 128 characters. See [Sub-elements and Attributes: Term](Schema/Sub_Elements_and_Attributes.htm#Term). | WS |
+| 21/11/2024 | Updated minimum length of the `PAN` to be 14 characters. Added ISO currency code 924. Included new CLR and NCLR schemas. See [PRN 196](https://docs.thredd.com/GPSPRN.htm) and [PRN 197](https://docs.thredd.com/GPSPRN.htm). | KD |
+| 04/11/2024 | Updated the description of the `Desc` field maximum value to 500 characters. See [Sub-elements and Attributes: Desc](Schema/Sub_Elements_and_Attributes.htm#Desc). | WS |
+| 10/10/2024 | Added the MVC token indicator to the [Card](Schema/Sub_Elements_and_Attributes.htm) sub-element, and included a new schema file, and updated examples. See [PRN-192](https://docs.thredd.com/GPSPRN.htm) | KD |
+| 1.4 | 26/09/2024 | Added descriptions of the [Auth\_type](Schema/Sub_Elements_and_Attributes.htm) sub-element, and included a new schema file, and updated examples. See: [PRN-185](https://docs.thredd.com/GPSPRN.htm) | KD |
+| 1.3 | 19/09/2024 | Corrections to schema. | KD |
+| 05/09/2024 | New guide version available in HTML. | KD |
+| 1.2 | 23/07/2024 | In the [CardChrgBackRepRes](Schema/CardChrgBackRepRes.htm) element, clarified that `FIID`, `RIID`, and `ChargebackRefNum` are populated only for Mastercard chargebacks. | KD |
+| WS |
+| 02/07/2024 | Updated the [company address](Contact.htm). | PC |
+| 1.1 | 19/06/2024 | Added descriptions of the different types of chargeback records that can be provided in the [CardChrgBackRepRes](Schema/CardChrgBackRepRes.htm) element. | WS |
+| 30/05/2024 | Added naming of Global Transaction Reporting. | KD |
+| 1.0 | 21/05/2024 | Improved descriptions and standardised naming conventions in [File Sending Schedule](Getting_Started/Transactional_Data_Files_newreport.htm#File)[.](Getting_Started/Transactional_Data_Files_newreport.htm) | KD |
+| 01/03/2024 | Added content for new Clearing Reports and Non-Clearing Reports. Added CardOnlineFinancial element. | KD |
+| 07/06/2023 | Updated Operations email address to be occ@thredd.com | MW |
+| 27/04/2023 | Guide rebrand to new company name and brand identity. | WS |
+| 01/04/2023 | First draft. | WS |

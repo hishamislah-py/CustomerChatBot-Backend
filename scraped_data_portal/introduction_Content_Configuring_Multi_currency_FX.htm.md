@@ -1,0 +1,3 @@
+# 5.6 Multi-currency FX
+
+The Thredd Foreign Exchange (FX) service enables you to deploy seamless currency conversion solutions quickly and easily, avoid complexity, and reduce your operational costs and risks. The solutions support Visa and Mastercard and integrate with leading FX rate providers to provide a shorter time to market, allowing you to focus on delivering the right customer experience and propositions.
